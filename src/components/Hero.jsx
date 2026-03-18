@@ -1,8 +1,44 @@
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import { FiArrowDown, FiGithub } from 'react-icons/fi'
 import { HiOutlineMail } from 'react-icons/hi'
 
 export default function Hero() {
+    const nameTexts = ["Keinji Velina", "sitol2"]
+    const [textIndex, setTextIndex] = useState(0)
+    const [displayText, setDisplayText] = useState('')
+    const [isDeleting, setIsDeleting] = useState(false)
+
+    useEffect(() => {
+        const currentWord = nameTexts[textIndex]
+        let timeout
+
+        if (isDeleting) {
+            // Un-typing
+            if (displayText === '') {
+                setIsDeleting(false)
+                setTextIndex((prev) => (prev + 1) % nameTexts.length)
+            } else {
+                timeout = setTimeout(() => {
+                    setDisplayText(currentWord.substring(0, displayText.length - 1))
+                }, 50) // Erase speed
+            }
+        } else {
+            // Typing
+            if (displayText === currentWord) {
+                timeout = setTimeout(() => {
+                    setIsDeleting(true)
+                }, 2000) // Pause at end of word
+            } else {
+                timeout = setTimeout(() => {
+                    setDisplayText(currentWord.substring(0, displayText.length + 1))
+                }, 100) // Typing speed
+            }
+        }
+
+        return () => clearTimeout(timeout)
+    }, [displayText, isDeleting, textIndex])
+
     return (
         <section className="hero section" id="hero">
             <div className="hero-content container">
@@ -22,7 +58,14 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                 >
                     Hi, I'm
-                    <span className="name">Keinji C. Velina</span>
+                    <motion.span className="name">
+                        {displayText}
+                        <motion.span 
+                            animate={{ opacity: [1, 0] }}
+                            transition={{ repeat: Infinity, duration: 0.8, ease: "linear" }}
+                            style={{ display: "inline-block", width: "4px", backgroundColor: "currentColor", marginLeft: "4px" }}
+                        />
+                    </motion.span>
                 </motion.h1>
 
                 <motion.p

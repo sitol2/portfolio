@@ -23,7 +23,11 @@ export default function Contact() {
         const object = {
             ...formData,
             // Reads from .env locally, or Vercel Environment Variables in production
-            access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_WEB3FORMS_ACCESS_KEY_HERE' 
+            access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_WEB3FORMS_ACCESS_KEY_HERE',
+            // Formatting for the email received
+            subject: `New Portfolio Message from ${formData.name}`,
+            from_name: "Keinji's Portfolio",
+            replyto: formData.email
         }
         
         const json = JSON.stringify(object)
