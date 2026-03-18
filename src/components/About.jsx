@@ -16,7 +16,7 @@ export default function About() {
                     transition={{ duration: 0.6 }}
                 >
                     <span className="section-label">About Me</span>
-                    <h2 className="section-title">Passionate About Building</h2>
+                    <h2 className="section-title">Better Than Me Yesterday</h2>
                 </motion.div>
 
                 <div className="about-grid">
@@ -38,7 +38,7 @@ export default function About() {
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.8, delay: 0.3 }}
                     >
-                        <h3>CS Student & AI Enthusiast</h3>
+                        <h3>CS Student & A Collection of Mistake</h3>
                         <p>
                             I'm a Computer Science student at Laguna State Polytechnic University,
                             majoring in Intelligent Systems. With a diverse technical skillset and a
