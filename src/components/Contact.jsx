@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { HiOutlineMail } from 'react-icons/hi'
+import { FaFacebookF } from 'react-icons/fa'
 import { FiGithub, FiLinkedin, FiSend } from 'react-icons/fi'
 
 export default function Contact() {
@@ -77,9 +77,9 @@ export default function Contact() {
                         </p>
 
                         <div className="contact-links">
-                            <a href="mailto:keinjivelina15@gmail.com" className="contact-link">
-                                <span className="contact-link-icon"><HiOutlineMail /></span>
-                                <span>keinjivelina15@gmail.com</span>
+                            <a href="https://www.facebook.com/toudo.kirin.9" target="_blank" rel="noopener noreferrer" className="contact-link">
+                                <span className="contact-link-icon"><FaFacebookF /></span>
+                                <span>facebook.com/toudo.kirin.9</span>
                             </a>
                             <a href="https://www.linkedin.com/in/keinji-velina-423736326/" target="_blank" rel="noopener noreferrer" className="contact-link">
                                 <span className="contact-link-icon"><FiLinkedin /></span>
