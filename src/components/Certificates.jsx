@@ -64,6 +64,11 @@ const certificates = [
         issuer: 'DataCamp',
         file: '/certificates/Working With Hugging Face.pdf',
     },
+    {
+        title: 'OpenxAI VIBE Coding Session',
+        issuer: 'Certificate of Recognition',
+        file: '/certificates/e0af6bc6-0023-45d5-847f-414b6f0ab80c.png',
+    },
 ]
 
 function PdfModal({ cert, onClose }) {
@@ -104,13 +109,21 @@ function PdfModal({ cert, onClose }) {
                     </div>
                 </div>
                 <div className="pdf-modal-body">
-                    <iframe
-                        src={`${cert.file}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                        title={cert.title}
-                        width="100%"
-                        height="100%"
-                        style={{ border: 'none', borderRadius: '0 0 16px 16px', background: '#fff' }}
-                    />
+                    {cert.file.match(/\.(png|jpg|jpeg|webp)$/i) ? (
+                        <img
+                            src={cert.file}
+                            alt={cert.title}
+                            style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '0 0 16px 16px', background: '#fff' }}
+                        />
+                    ) : (
+                        <iframe
+                            src={`${cert.file}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                            title={cert.title}
+                            width="100%"
+                            height="100%"
+                            style={{ border: 'none', borderRadius: '0 0 16px 16px', background: '#fff' }}
+                        />
+                    )}
                 </div>
             </motion.div>
         </motion.div>
