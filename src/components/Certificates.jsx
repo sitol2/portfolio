@@ -59,6 +59,11 @@ const certificates = [
         issuer: 'Webinar',
         file: '/certificates/AI Webinar 5 Certificate_Keinji C. Velina.pdf',
     },
+    {
+        title: 'Working With Hugging Face',
+        issuer: 'DataCamp',
+        file: '/certificates/Working With Hugging Face.pdf',
+    },
 ]
 
 function PdfModal({ cert, onClose }) {
